@@ -293,6 +293,21 @@
   .grid-section{margin-top:20px;}
   .grid-cap{font-family:var(--mono); font-size:12px; color:var(--text-muted); margin:36px 0 14px; text-transform:uppercase; letter-spacing:0.05em;}
   .grid-img{border-radius:14px; overflow:hidden; border:1px solid var(--line);}
+  .grid-carousel{
+    display:flex; gap:14px; overflow-x:auto; padding:2px 2px 16px; margin:0 -2px;
+    scroll-snap-type:x proximity; cursor:grab; user-select:none;
+    scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;
+  }
+  .grid-carousel.dragging{cursor:grabbing; scroll-snap-type:none;}
+  .grid-carousel::-webkit-scrollbar{height:8px;}
+  .grid-carousel::-webkit-scrollbar-track{background:transparent;}
+  .grid-carousel::-webkit-scrollbar-thumb{background:var(--line-strong); border-radius:100px;}
+  .grid-carousel .gc-item{
+    flex:0 0 auto; height:230px; scroll-snap-align:start;
+    border-radius:12px; overflow:hidden; border:1px solid var(--line); background:var(--surface);
+  }
+  .grid-carousel .gc-item img{height:100%; width:auto; max-width:none; display:block; object-fit:cover; pointer-events:none;}
+  @media (max-width:640px){ .grid-carousel .gc-item{height:170px;} }
 
   /* ---- audio ---- */
   .audio-panel{
@@ -598,17 +613,72 @@
       <!-- category grids -->
       <div class="grid-section">
         <div class="grid-cap">Performance &amp; Social Content</div>
-        <div class="grid-img"><img src="assets/work-performance-01.png" alt="Grilla de piezas de performance y contenido para redes sociales, parte 1"></div>
-        <div class="grid-img" style="margin-top:16px;"><img src="assets/work-performance-02.png" alt="Grilla de piezas de performance y contenido para redes sociales, parte 2"></div>
+        <div class="grid-carousel" data-carousel>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image17.png" alt="Piezas de performance y contenido para redes sociales — pieza 1" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image18.png" alt="Piezas de performance y contenido para redes sociales — pieza 2" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image19.png" alt="Piezas de performance y contenido para redes sociales — pieza 3" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image21.png" alt="Piezas de performance y contenido para redes sociales — pieza 4" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image22.png" alt="Piezas de performance y contenido para redes sociales — pieza 5" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image23.png" alt="Piezas de performance y contenido para redes sociales — pieza 6" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image24.png" alt="Piezas de performance y contenido para redes sociales — pieza 7" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image25.png" alt="Piezas de performance y contenido para redes sociales — pieza 8" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image26.png" alt="Piezas de performance y contenido para redes sociales — pieza 9" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image27.png" alt="Piezas de performance y contenido para redes sociales — pieza 10" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image29.png" alt="Piezas de performance y contenido para redes sociales — pieza 11" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image30.png" alt="Piezas de performance y contenido para redes sociales — pieza 12" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image32.png" alt="Piezas de performance y contenido para redes sociales — pieza 13" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image33.png" alt="Piezas de performance y contenido para redes sociales — pieza 14" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image34.gif" alt="Piezas de performance y contenido para redes sociales — pieza 15" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image36.gif" alt="Piezas de performance y contenido para redes sociales — pieza 16" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image37.gif" alt="Piezas de performance y contenido para redes sociales — pieza 17" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image42.gif" alt="Piezas de performance y contenido para redes sociales — pieza 18" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image43.gif" alt="Piezas de performance y contenido para redes sociales — pieza 19" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image44.gif" alt="Piezas de performance y contenido para redes sociales — pieza 20" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image49.gif" alt="Piezas de performance y contenido para redes sociales — pieza 21" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image50.gif" alt="Piezas de performance y contenido para redes sociales — pieza 22" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image57.gif" alt="Piezas de performance y contenido para redes sociales — pieza 23" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Performance%20%26%20Social%20Content/image65.gif" alt="Piezas de performance y contenido para redes sociales — pieza 24" loading="lazy"></div>
+        </div>
 
         <div class="grid-cap">Brand &amp; Visual Systems</div>
-        <div class="grid-img"><img src="assets/work-brand.png" alt="Sistemas de marca, merchandising y activaciones físicas"></div>
+        <div class="grid-carousel" data-carousel>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image35.gif" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 1" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image38.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 2" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image39.gif" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 3" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image40.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 4" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image41.gif" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 5" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image45.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 6" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image46.gif" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 7" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image47.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 8" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image48.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 9" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image51.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 10" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image53.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 11" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Brand%20%26%20Visual%20Systems/image63.png" alt="Sistemas de marca, merchandising y activaciones físicas — pieza 12" loading="lazy"></div>
+        </div>
 
         <div class="grid-cap">Product &amp; Conversion Design</div>
-        <div class="grid-img"><img src="assets/work-product.png" alt="Diseño de producto y flujos de conversión"></div>
+        <div class="grid-carousel" data-carousel>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image52.gif" alt="Diseño de producto y flujos de conversión — pieza 1" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image54.gif" alt="Diseño de producto y flujos de conversión — pieza 2" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image56.png" alt="Diseño de producto y flujos de conversión — pieza 3" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image58.gif" alt="Diseño de producto y flujos de conversión — pieza 4" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image60.png" alt="Diseño de producto y flujos de conversión — pieza 5" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image62.png" alt="Diseño de producto y flujos de conversión — pieza 6" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image66.gif" alt="Diseño de producto y flujos de conversión — pieza 7" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Product%20%26%20Conversion%20Design/image68.gif" alt="Diseño de producto y flujos de conversión — pieza 8" loading="lazy"></div>
+        </div>
 
         <div class="grid-cap">Video &amp; Storytelling</div>
-        <div class="grid-img"><img src="assets/work-video.png" alt="Piezas de video y storytelling de marca"></div>
+        <div class="grid-carousel" data-carousel>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image67.gif" alt="Piezas de video y storytelling de marca — pieza 1" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image69.gif" alt="Piezas de video y storytelling de marca — pieza 2" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image70.gif" alt="Piezas de video y storytelling de marca — pieza 3" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image72.gif" alt="Piezas de video y storytelling de marca — pieza 4" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image73.gif" alt="Piezas de video y storytelling de marca — pieza 5" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image74.gif" alt="Piezas de video y storytelling de marca — pieza 6" loading="lazy"></div>
+          <div class="gc-item"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Video%20%26%20Storytelling/image77.gif" alt="Piezas de video y storytelling de marca — pieza 7" loading="lazy"></div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -820,6 +890,29 @@
     bar.style.animationDelay = (Math.random()*2) + 's';
     waveform.appendChild(bar);
   }
+
+  // drag-to-scroll for the category carousels
+  document.querySelectorAll('[data-carousel]').forEach(track => {
+    let isDown = false, startX = 0, scrollStart = 0, moved = false;
+    track.addEventListener('mousedown', (e) => {
+      isDown = true; moved = false;
+      track.classList.add('dragging');
+      startX = e.pageX;
+      scrollStart = track.scrollLeft;
+    });
+    ['mouseleave','mouseup'].forEach(evt => track.addEventListener(evt, () => {
+      isDown = false; track.classList.remove('dragging');
+    }));
+    track.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const dx = e.pageX - startX;
+      if(Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = scrollStart - dx;
+    });
+    // prevent the click-through on the image right after a drag
+    track.addEventListener('click', (e) => { if(moved) e.preventDefault(); }, true);
+  });
 </script>
 
 </body>
