@@ -44,10 +44,12 @@
 
   /* ---- eyebrow / labels ---- */
   .eyebrow{
-    font-family:var(--mono);
-    font-size:12.5px;
-    letter-spacing:0.06em;
-    color:var(--text-muted);
+    font-family:"Roboto Condensed", sans-serif;
+    font-size:20px;
+    font-weight:300;
+    letter-spacing:12.8px;
+    line-height:normal;
+    color:var(--rec);
     display:flex;
     align-items:center;
     gap:10px;
@@ -55,14 +57,17 @@
     text-transform:uppercase;
   }
   .eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--rec); flex-shrink:0;}
+  .eyebrow.wave{color:var(--wave);}
   .eyebrow.wave .dot{background:var(--wave);}
+  .eyebrow.key{color:var(--key);}
   .eyebrow.key .dot{background:var(--key);}
+  @media (max-width:720px){ .eyebrow{font-size:15px; letter-spacing:7px;} .case-tag{font-size:12px; letter-spacing:5px;} }
 
   h1,h2,h3{font-family:var(--display); font-weight:700; letter-spacing:-0.01em;}
   .display-1{font-size:clamp(2.6rem, 6vw, 5.2rem); font-weight:900; line-height:1.04;}
-  .display-2{font-family:"Roboto Condensed", sans-serif; font-size:clamp(1.9rem, 3.4vw, 2.866rem); line-height:1.12; font-weight:400;}
+  .display-2{font-family:"Roboto Condensed", sans-serif; font-size:clamp(1.9rem, 3.4vw, 45.861px); line-height:0.77461; font-weight:400;}
   .script{font-family:var(--script); font-weight:400; font-style:normal;}
-  .lede{font-size:1.15rem; color:var(--text-muted); max-width:56ch; line-height:1.65;}
+  .lede{font-family:"Roboto Condensed", sans-serif; font-size:20px; font-weight:300; color:#FFFFFF; max-width:56ch; line-height:1.5;}
   .body-p{font-family:"Roboto Condensed", sans-serif; font-size:1.25rem; font-weight:300; color:#FFFFFF; max-width:640px; line-height:1.5;}
 
   /* ---- top nav ---- */
@@ -172,16 +177,38 @@
 
   /* ---- section header pattern ---- */
   .sec-head{margin-bottom:56px;}
-  .sec-head h2{max-width:20ch;}
+  .sec-head h2{max-width:34ch;}
 
   /* ---- about ---- */
   .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:start;}
   @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:40px;} }
-  .stat-panel{border:1px solid #8F94A6; border-radius:23px; padding:8px 26px;}
-  .stat-row{display:flex; justify-content:space-between; align-items:baseline; padding:22px 2px; border-bottom:1px solid var(--line); gap:20px;}
+  .stat-panel{
+    position:relative;
+    border:1px solid #8F94A6;
+    border-radius:23px;
+    padding:8px 26px;
+    background:var(--surface);
+    z-index:1;
+  }
+  .stat-panel::before{
+    content:'';
+    position:absolute;
+    left:10%;
+    right:10%;
+    bottom:-34px;
+    height:68px;
+    background:linear-gradient(311deg, #F49242 0%, #FF2A42 98.74%);
+    filter:blur(38px);
+    opacity:0.55;
+    z-index:-1;
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .stat-row{display:flex; justify-content:space-between; align-items:center; padding:22px 2px; border-bottom:1px solid var(--line); gap:20px;}
   .stat-row:last-child{border-bottom:none;}
-  .stat-row .n{font-family:"Roboto Condensed", sans-serif; font-size:1.5rem; color:#FFFFFF; font-weight:400;}
-  .stat-row .l{font-family:"Roboto Condensed", sans-serif; font-size:15px; font-weight:300; color:#FFFFFF; text-align:right; max-width:22ch;}
+  .stat-row .n{font-family:"Roboto Condensed", sans-serif; font-size:30px; line-height:1; color:#FFFFFF; font-weight:400; flex-shrink:0;}
+  .stat-row .l{font-family:"Roboto Condensed", sans-serif; font-size:17.332px; line-height:1.25; font-weight:300; color:#FFFFFF; text-align:right; max-width:22ch;}
+  @media (max-width:720px){ .stat-row .n{font-size:24px;} }
 
   /* ---- AI toolkit ---- */
   .sec-head.center{text-align:center;}
@@ -196,19 +223,24 @@
   @media (max-width:860px){ .tool-grid{grid-template-columns:repeat(2,1fr);} }
   @media (max-width:560px){ .tool-grid{grid-template-columns:1fr;} }
   .tool-card{padding:30px 26px; min-height:150px; display:flex; flex-direction:column; justify-content:space-between; border-right:1px solid var(--line); border-bottom:1px solid var(--line);}
-  .tool-card .tag{font-family:var(--mono); font-size:10.5px; letter-spacing:0.06em; color:var(--text-muted); text-transform:uppercase;}
-  .tool-card h3{font-size:1.15rem; margin-top:10px; font-weight:700;}
-  .tool-card p{font-size:13px; color:var(--text-muted); margin-top:10px; line-height:1.55;}
+  .tool-card .tag{font-family:"Roboto Condensed", sans-serif; font-size:12px; font-weight:400; letter-spacing:0.04em; color:var(--wave); text-transform:uppercase;}
+  .tool-card h3{font-family:"Roboto Condensed", sans-serif; font-size:clamp(1.3rem, 2.2vw, 23.873px); margin-top:10px; font-weight:400; line-height:1.05;}
+  .tool-card p{font-family:"Roboto Condensed", sans-serif; font-size:clamp(0.9rem, 1.6vw, 17.905px); font-weight:300; color:#FFFFFF; margin-top:10px; line-height:1.5;}
 
   .script-list{margin-top:18px; border-top:1px solid var(--line);}
-  .script-row{display:grid; grid-template-columns:200px 1fr; gap:24px; padding:20px 4px; border-bottom:1px solid var(--line); align-items:baseline;}
+  .script-row{display:grid; grid-template-columns:230px 1fr; gap:24px; padding:20px 4px; border-bottom:1px solid var(--line); align-items:baseline;}
   @media (max-width:640px){ .script-row{grid-template-columns:1fr; gap:6px;} }
-  .script-row .k{font-family:var(--mono); font-size:13px; color:var(--wave);}
-  .script-row .v{font-size:14px; color:#C9CCD6;}
+  .script-row .k{font-family:"Roboto Condensed", sans-serif; font-size:20px; font-weight:700; color:var(--wave);}
+  .script-row .v{font-family:"Roboto Condensed", sans-serif; font-size:20px; font-weight:300; color:#FFFFFF;}
 
   /* ---- demo ---- */
+  .demo-frame{
+    position:relative; border-radius:22px; padding:1.5px;
+    background:linear-gradient(90deg, #F49242 0%, #E2283E 100%);
+    box-shadow:0 0 60px -18px rgba(244,146,66,0.55), 0 0 60px -18px rgba(226,40,62,0.45);
+  }
   .demo-panel{
-    background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:32px;
+    background:var(--surface); border-radius:21px; padding:32px;
   }
   .demo-controls{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:32px;}
   @media (max-width:860px){ .demo-controls{grid-template-columns:1fr 1fr;} }
@@ -225,20 +257,21 @@
     transition:border-color .2s, color .2s;
   }
   .demo-random:hover{border-color:var(--key); color:var(--key);}
-  .demo-row2{display:flex; align-items:flex-end; gap:24px; margin-bottom:32px; flex-wrap:wrap;}
-  .demo-row2 .demo-random{margin-bottom:0;}
+  .demo-media-row{display:flex; align-items:flex-start; gap:24px; margin-bottom:32px; flex-wrap:wrap;}
+  .demo-media-left{flex:1; min-width:280px;}
+  .demo-media-left .demo-random{margin-bottom:20px;}
   .image-field label{display:block; font-family:var(--mono); font-size:11px; color:var(--text-muted); margin-bottom:8px; letter-spacing:0.04em; text-transform:uppercase;}
   .dropzone{
-    position:relative; width:132px; height:74px; border:1px dashed var(--line-strong); border-radius:8px;
+    position:relative; width:270px; max-width:100%; height:326px; border:1px dashed var(--text-muted); border-radius:10px;
     display:flex; align-items:center; justify-content:center; cursor:pointer; text-align:center;
     background:var(--bg); transition:border-color .2s, background .2s; overflow:hidden;
   }
   .dropzone:hover, .dropzone.drag-over{border-color:var(--wave); background:rgba(244,146,66,0.08);}
-  .dropzone .dz-text{font-family:var(--mono); font-size:9px; color:var(--text-muted); line-height:1.4; padding:6px; pointer-events:none;}
+  .dropzone .dz-text{font-family:"Roboto Condensed", sans-serif; font-size:13px; color:var(--text-muted); line-height:1.5; padding:6px; pointer-events:none;}
   .dropzone img.dz-preview{width:100%; height:100%; object-fit:cover; display:block;}
   .dz-clear{
-    position:absolute; top:4px; right:4px; width:18px; height:18px; border-radius:50%;
-    background:rgba(0,0,0,0.65); color:#fff; border:none; font-size:11px; line-height:1; cursor:pointer;
+    position:absolute; top:8px; right:8px; width:22px; height:22px; border-radius:50%;
+    background:rgba(0,0,0,0.65); color:#fff; border:none; font-size:12px; line-height:1; cursor:pointer;
     display:flex; align-items:center; justify-content:center; padding:0;
   }
   .preview-row{display:flex; gap:24px; align-items:flex-end; flex-wrap:wrap;}
@@ -272,8 +305,8 @@
   .case-media.scroll-45::-webkit-scrollbar{width:8px;}
   .case-media.scroll-45::-webkit-scrollbar-track{background:transparent;}
   .case-media.scroll-45::-webkit-scrollbar-thumb{background:var(--line-strong); border-radius:100px;}
-  .case-tag{font-family:var(--mono); font-size:11px; color:var(--rec); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;}
-  .case h3{font-size:1.7rem; max-width:16ch; margin-bottom:16px;}
+  .case-tag{font-family:"Roboto Condensed", sans-serif; font-size:15px; font-weight:300; color:var(--wave); text-transform:uppercase; letter-spacing:9.6px; margin-bottom:14px;}
+  .case h3{font-family:"Roboto Condensed", sans-serif; font-weight:400; font-size:clamp(1.6rem, 3.2vw, 35px); line-height:0.8; max-width:480px; margin-bottom:16px;}
   .case-stats{display:flex; gap:28px; margin-top:22px; flex-wrap:wrap;}
   .cs-item{display:flex; flex-direction:column;}
   .cs-n{font-family:var(--mono); font-size:1.4rem; font-weight:600; color:var(--key);}
@@ -370,6 +403,58 @@
   .contact-list a:hover{color:var(--wave);}
   .contact-list a span.k{color:var(--text-muted); font-size:11px; text-transform:uppercase;}
   .foot-bottom{margin-top:70px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-family:var(--mono); font-size:11.5px; color:var(--text-muted);}
+
+  /* ---- contact overlay (Hablemos card) ---- */
+  .contact-overlay{
+    position:fixed; inset:0; z-index:300;
+    display:flex; align-items:center; justify-content:center;
+    padding:24px;
+    background:rgba(10,11,15,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    opacity:0; visibility:hidden; pointer-events:none;
+    transition:opacity .25s ease, visibility .25s ease;
+  }
+  .contact-overlay.open{opacity:1; visibility:visible; pointer-events:auto;}
+  .contact-card-frame{
+    position:relative; border-radius:24px; padding:1.5px;
+    max-width:400px; width:100%;
+    background:linear-gradient(90deg, #F49242 0%, #E2283E 100%);
+    box-shadow:0 0 60px -18px rgba(244,146,66,0.55), 0 0 60px -18px rgba(226,40,62,0.45);
+    transform:translateY(14px) scale(0.96);
+    transition:transform .3s ease;
+  }
+  .contact-overlay.open .contact-card-frame{transform:translateY(0) scale(1);}
+  .contact-card{
+    background:var(--surface); border-radius:22.5px; padding:44px 32px 32px;
+    text-align:center; position:relative;
+  }
+  .contact-close{
+    position:absolute; top:16px; right:16px; width:32px; height:32px; border-radius:50%;
+    border:1px solid var(--line-strong); background:none; color:var(--text-muted);
+    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:15px;
+    transition:border-color .2s, color .2s; line-height:1;
+  }
+  .contact-close:hover{border-color:var(--rec); color:var(--rec);}
+  .contact-avatar{
+    width:92px; height:92px; border-radius:50%; margin:0 auto 20px;
+    padding:1.5px; box-sizing:border-box;
+    background:linear-gradient(135deg,#FF2A42,#F49242);
+  }
+  .contact-avatar img{width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; background:var(--surface);}
+  .contact-card h3{font-family:"Roboto Condensed", sans-serif; font-weight:400; font-size:27px; color:#fff;}
+  .contact-card .role{font-family:var(--mono); font-size:10.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); margin-top:8px;}
+  .contact-links{margin-top:28px; display:flex; flex-direction:column; gap:10px;}
+  .contact-links a{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 18px; border-radius:14px; border:1px solid var(--line);
+    text-decoration:none; color:var(--text); font-family:var(--mono); font-size:13px;
+    transition:border-color .2s, background .2s, transform .2s;
+  }
+  .contact-links a:hover{border-color:var(--wave); background:rgba(244,146,66,0.08); transform:translateY(-1px);}
+  .contact-links a .k{color:var(--text-muted); font-size:10px; text-transform:uppercase; letter-spacing:0.05em; flex-shrink:0;}
+  .contact-links a .v{color:#fff; font-family:"Roboto Condensed",sans-serif; font-size:14px; font-weight:400; text-align:right;}
+  @media (max-width:480px){ .contact-card{padding:40px 22px 26px;} }
 </style>
 </head>
 <body>
@@ -377,7 +462,7 @@
 <header class="nav">
   <div class="mark">MANUEL<span>·</span>ROJAS</div>
   <div id="clock">REC 00:00:00:00</div>
-  <a class="cta" href="#contact">Hablemos →</a>
+  <a class="cta js-open-contact" href="#contact">Hablemos →</a>
 </header>
 
 <nav class="rail" id="rail">
@@ -396,11 +481,11 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="wrap">
-      <div class="hero-tag">Manuel Rojas · <b>Creative / Motion Designer</b> · AI Driven · Chile</div>
+      <div class="hero-tag">Manuel Rojas - Creative / Motion Designer - <b>AI Driven</b> - Chile</div>
       <h1 class="display-1">Diseño que convierte<br><span class="script">escalado con</span> IA</h1>
-      <p class="lede">7 años construyendo creatividad para performance — paid social, motion, producto y audio — con una base poco común: liderar growth y CRO de punta a punta.</p>
+      <p class="lede">7 años construyendo creatividad para performance — paid social, motion, producción y audio — con una base poco común: liderar growth y CRO de punta a punta.</p>
       <div class="hero-actions">
-        <a class="btn btn-hero" href="#contact">Hablemos →</a>
+        <a class="btn btn-hero js-open-contact" href="#contact">Hablemos →</a>
       </div>
       <div class="hero-horizon" aria-hidden="true">
         <div class="horizon-sphere-sm a"></div>
@@ -425,16 +510,16 @@
     <div class="wrap">
       <div class="about-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span>00:00:12 — SOBRE MÍ</div>
-          <h2 class="display-2">De optimizar funnels a optimizar fotogramas.</h2>
-          <p class="body-p" style="margin-top:26px;">Empecé diseñando piezas para redes y contenido multimedia. Después pasé años liderando conversión y performance end-to-end en Xepelin: analizando miles de anuncios, corriendo experimentos, entendiendo con datos qué es lo que realmente hace convertir una pieza.</p>
-          <p class="body-p" style="margin-top:18px;">Ese cruce —dato y diseño— es mi ventaja real. No diseño "bonito" y espero que funcione: diseño con hipótesis, itero con resultados, y hoy sumo IA para producir a la velocidad y volumen que pide el paid media moderno, sin perder criterio en el camino.</p>
+          <div class="eyebrow"><span class="dot"></span>SOBRE MÍ</div>
+          <h2 class="display-2">Diseñador Multimedia y CRO Lead</h2>
+          <p class="body-p" style="margin-top:26px;">Arranqué mi carrera metido en el mundo del diseño multimedia y la producción de contenidos, experimentando con formatos para construir identidad de marca. Con el tiempo, quise entender el impacto real de lo que creaba y di el salto al ecosistema de CRO y performance, liderando estrategias end-to-end en Xepelin, analizando datos masivos de pauta y optimizando cada paso del embudo del usuario.</p>
+          <p class="body-p" style="margin-top:18px;">Mi aporte es una mezcla entre la sensibilidad visual y de producción de un diseñador unida a la mentalidad analítica de un Growth/CRO Lead. Sé estructurar experimentos, reducir fricciones en la experiencia y usar la tecnología actual a favor de la eficiencia, aportando una visión estratégica donde la creatividad y los datos van de la mano.</p>
         </div>
         <div class="stat-panel">
-          <div class="stat-row"><span class="n">Enfoque End-to-End</span><span class="l">de la pauta y el funnel hasta la conversión final</span></div>
-          <div class="stat-row"><span class="n">Diseño + Data</span><span class="l">la creatividad se mide, no solo se infiere</span></div>
-          <div class="stat-row"><span class="n">Motion &amp; UI</span><span class="l">templates dinámicos, animación web y sistemas visuales</span></div>
-          <div class="stat-row"><span class="n">Mentalidad Growth</span><span class="l">experimentación, hipótesis y optimización continua</span></div>
+          <div class="stat-row"><span class="n">Enfoque<br>End-to-End</span><span class="l">del pauta al funnel hasta la conversión final</span></div>
+          <div class="stat-row"><span class="n">Diseño<br>+ Data</span><span class="l">la creatividad se mide, no solo se infiere</span></div>
+          <div class="stat-row"><span class="n">Motion<br>&amp; UI</span><span class="l">templates dinámicos y sistemas visuales</span></div>
+          <div class="stat-row"><span class="n">Mentalidad<br>Growth</span><span class="l">experimentación, hipótesis y optimización continua</span></div>
         </div>
       </div>
     </div>
@@ -443,8 +528,8 @@
   <!-- AI TOOLKIT -->
   <section id="toolkit">
     <div class="wrap">
-      <div class="sec-head center">
-        <div class="eyebrow wave"><span class="dot"></span>AI DRIVEN</div>
+      <div class="sec-head">
+        <div class="eyebrow"><span class="dot"></span>AI DRIVEN</div>
         <h2 class="display-2">La IA no diseña por mí.<br>Diseña conmigo, más rápido.</h2>
         <p class="lede" style="margin-top:18px;">Uso un set específico de herramientas, cada una con un trabajo puntual dentro de mi flujo de producción real.</p>
       </div>
@@ -490,10 +575,11 @@
   <section id="demo">
     <div class="wrap">
       <div class="sec-head">
-        <div class="eyebrow key"><span class="dot"></span>00:03:15 — CREATIVE ENGINE (EN VIVO)</div>
-        <h2 class="display-2">Así se ve una creatividad dinámica, en tiempo real.</h2>
+        <div class="eyebrow"><span class="dot"></span>CREATIVE ENGINE (EN VIVO)</div>
+        <h2 class="display-2">Así se ve una creatividad<br>dinámica, en tiempo real.</h2>
         <p class="lede" style="margin-top:18px;">Un mismo sistema generando variantes para distintos formatos y plataformas sin recrear todo desde cero. Cambia los controles y mira cómo se actualizan los tres formatos al instante.</p>
       </div>
+      <div class="demo-frame">
       <div class="demo-panel">
         <div class="demo-controls">
           <div class="field">
@@ -521,8 +607,27 @@
             </select>
           </div>
         </div>
-        <div class="demo-row2">
-          <button class="demo-random" id="btn-random">↻ generar variante aleatoria</button>
+        <div class="demo-media-row">
+          <div class="demo-media-left">
+            <button class="demo-random" id="btn-random">↻ generar variante aleatoria</button>
+            <div class="preview-row" id="preview-row">
+              <div class="frame square" data-fmt="meta">
+                <span class="badge">1:1 · FEED</span>
+                <span class="headline" data-role="headline"></span>
+                <span class="cta-pill" data-role="cta"></span>
+              </div>
+              <div class="frame story" data-fmt="tiktok">
+                <span class="badge">9:16 · STORY/REEL</span>
+                <span class="headline" data-role="headline"></span>
+                <span class="cta-pill" data-role="cta"></span>
+              </div>
+              <div class="frame wide" data-fmt="youtube">
+                <span class="badge">16:9 · VIDEO</span>
+                <span class="headline" data-role="headline"></span>
+                <span class="cta-pill" data-role="cta"></span>
+              </div>
+            </div>
+          </div>
           <div class="field image-field">
             <label for="in-image">Imagen</label>
             <div class="dropzone" id="dropzone">
@@ -532,24 +637,8 @@
             </div>
           </div>
         </div>
-        <div class="preview-row" id="preview-row">
-          <div class="frame square" data-fmt="meta">
-            <span class="badge">1:1 · FEED</span>
-            <span class="headline" data-role="headline"></span>
-            <span class="cta-pill" data-role="cta"></span>
-          </div>
-          <div class="frame story" data-fmt="tiktok">
-            <span class="badge">9:16 · STORY/REEL</span>
-            <span class="headline" data-role="headline"></span>
-            <span class="cta-pill" data-role="cta"></span>
-          </div>
-          <div class="frame wide" data-fmt="youtube">
-            <span class="badge">16:9 · VIDEO</span>
-            <span class="headline" data-role="headline"></span>
-            <span class="cta-pill" data-role="cta"></span>
-          </div>
-        </div>
-        <div class="demo-note">→ El formato destacado cambia según la plataforma seleccionada, igual que en un pipeline real de producción de paid media multi-formato.</div>
+       
+      </div>
       </div>
     </div>
   </section>
@@ -558,19 +647,20 @@
   <section id="work">
     <div class="wrap">
       <div class="sec-head">
-        <div class="eyebrow"><span class="dot"></span>00:05:00 — SELECCIÓN DE TRABAJO</div>
-        <h2 class="display-2">Trabajo real, para marcas reales, a volumen real.</h2>
+        <div class="eyebrow"><span class="dot"></span>SELECCIÓN DE TRABAJO</div>
+        <h2 class="display-2">Trabajo real, para marcas<br>reales, a volumen real.</h2>
       </div>
 
       <!-- Case 1: Xepelin Banking -->
       <div class="case">
         <div class="case-media scroll-45"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/caso-01-xepelin-banking.png" alt="Landing anterior de Xepelin Banking, armada con módulos template en Sanity"></div>
         <div>
-          <div class="case-tag">Caso destacado — speed run</div>
-          <h3>De un template que no rendía, a una landing propia en 2 horas.</h3>
-          <p class="body-p">El equipo de producto arma sus webs en Sanity con módulos casi-template: funcional, pero limitado para lo que necesitábamos comunicar en el lanzamiento de Xepelin Banking. Armé la landing completa en HTML/CSS con animaciones en Lottie, usando Claude como copiloto de desarrollo. En dos horas, frontend tuvo una base 100% funcional lista para sacar lo que necesitaran.</p>
+          <div class="case-tag">CASO 01 - OPTIMIZACIÓN WEB</div>
+          <h3>Rompiendo la rigidez de los<br>templates con desarrollo ágil.</h3>
+          <p class="body-p">El ecosistema de CMS / Sanity con módulos rígidos limitaba la agilidad necesaria para comunicar el lanzamiento de un nuevo producto.</p>
+          <p class="body-p" style="margin-top:14px;">Para destrabar el cuello de botella, diseñé y codifiqué la landing completa en HTML/CSS con animaciones en Lottie, usando Claude como copiloto de desarrollo. En solo dos horas entregué una base funcional lista para producción, facilitando la integración del equipo de front-end y logrando salir al aire sin fricciones.</p>
           <div class="case-links">
-            <a class="link-chip" href="https://dapper-narwhal-476ae3.netlify.app/" target="_blank" rel="noopener">Ver landing final ↗</a>
+            <a class="link-chip" href="https://dapper-narwhal-476ae3.netlify.app/" target="_blank" rel="noopener">Ver Landing Final ↗</a>
           </div>
         </div>
       </div>
@@ -584,9 +674,9 @@
         </div>
         <div>
           <div class="case-tag">Caso destacado — el puntapié inicial</div>
-          <h3>De producir un evento en vivo, a escalar un formato completo.</h3>
-          <p class="body-p">Para <b style="color:#fff;">Women in Tech</b> armé todo el kit de transmisión desde cero: aperturas, lower thirds, cortinillas de intermedio, pantallas para el evento en vivo. No fue solo difusión — fue diseñar toda la experiencia visual y sonora de la transmisión.</p>
-          <p class="body-p" style="margin-top:14px;">Ese proyecto terminó siendo el puntapié inicial: a partir de ahí, empezamos a producir webinars como formato recurrente en Xepelin.</p>
+          <h3>Cómo un kit gráfico en vivo se convirtió en un formato recurrente de marca.</h3>
+          <p class="body-p">Lo que comenzó como un encargo puntual de diseño y branding para un evento en vivo (Women in Tech), se convirtió en el puntapié inicial para escalar todo un formato de eventos y contenidos recurrentes.</p>
+          <p class="body-p" style="margin-top:14px;">Diseñé la experiencia visual y el kit completo de transmisión (aperturas, lower thirds, cortinillas y pantallas). El éxito del formato permitió expandir la estrategia a otros espacios institucionales y webinars, desarrollando ecosistemas gráficos completos, piezas digitales a escala y merch física para consolidar la presencia de marca.</p>
         </div>
       </div>
 
@@ -597,7 +687,7 @@
         </div>
         <div>
           <div class="case-tag">Caso destacado — la lección de lo simple</div>
-          <h3>Cuando lo más simple le ganó a lo más elaborado.</h3>
+          <h3>Menos ruido, más impacto: la<br>animación que llegó a Times Square.</h3>
           <p class="body-p">Cuando Xepelin levantó su Serie B, me tocó producir la animación que se proyectó en Nasdaq / Times Square. Tenía el skillset para llevar propuestas muy trabajadas a un evento de esa magnitud, e iteré una y otra vez buscando algo más ambicioso.</p>
           <p class="body-p" style="margin-top:14px;">La que finalmente ganó fue la ejecución más simple y directa. Una buena lección que sigo aplicando: más trabajado no siempre es mejor — a veces es solo más ruido.</p>
         </div>
@@ -608,12 +698,12 @@
         <div class="case-media"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/caso-04-Instincktt.png" alt="Métricas de audiencia del artista Instincktt en Spotify, YouTube, Instagram y TikTok"></div>
         <div>
           <div class="case-tag">Caso destacado — artist branding &amp; marketing</div>
-          <h3>Construyendo la marca de un artista, desde cero hasta Sony Music.</h3>
-          <p class="body-p">Estoy a cargo del branding y marketing de <b style="color:#fff;">Instincktt</b>, un artista emergente de Santiago que mezcla rock, música urbana y electrónica — hoy en conversaciones con Sony Music, RIMAS y BZR para firmar contrato.</p>
-          <p class="body-p" style="margin-top:14px;">Narrativa, sonoridad y estética propia, con crecimiento 100% orgánico:</p>
+          <h3>Ejecución técnica y guerrilla digital para un artista en despegue.</h3>
+          <p class="body-p">Formando parte del equipo detrás de Instincktt —un proyecto emergente de Santiago que mezcla rock, música urbana y electrónica, y que hoy está en negociaciones clave con la industria global.</p>
+          <p class="body-p" style="margin-top:14px;">Aporté desde la ejecución técnica y el desarrollo visual en un proyecto con un crecimiento 100% orgánico: desde prototipos de producto con IA para propuestas de colaboración hasta campañas de guerrilla sintética (afiches y carteles urbanos 100% digitales que lograron un realismo tal que la comunidad y los fans dieron por sentada la intervención en la calle).</p>
           <div class="case-stats">
             <div class="cs-item"><span class="cs-n">90,4K</span><span class="cs-l">oyentes mensuales Spotify</span></div>
-            <div class="cs-item"><span class="cs-n">660K</span><span class="cs-l">seguidores YouTube</span></div>
+            <div class="cs-item"><span class="cs-n">660K</span><span class="cs-l">suscriptores YouTube</span></div>
             <div class="cs-item"><span class="cs-n">355K</span><span class="cs-l">seguidores TikTok</span></div>
           </div>
           <div class="case-links">
@@ -627,9 +717,10 @@
         <div class="case-media"><img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/caso-05-Eclipse.png" alt="Interfaz de la app Eclipse, plataforma musical para artistas y fans"></div>
         <div>
           <div class="case-tag">Caso destacado — producto &amp; branding</div>
-          <h3>Una plataforma para que los artistas no dependan del algoritmo.</h3>
-          <p class="body-p">Junto a un amigo ingeniero en sonido, trabajé en <b style="color:#fff;">Eclipse</b>: marca, identidad visual y diseño de producto para una app donde artistas pueden compartir su música directo con sus fans, sin depender de Spotify o SoundCloud Premium — algo cercano al modelo de JYP con su propia app.</p>
-          <p class="body-p" style="margin-top:14px;">Diseñé desde el sistema de marca (logo, merch, activaciones) hasta la interfaz completa del producto.</p>
+          <h3>Una plataforma propia para liberar a los artistas del algoritmo.</h3>
+          <p class="body-p">Nacida desde la experiencia en una productora de eventos enfocada en impulsar talentos emergentes.</p>
+          <p class="body-p" style="margin-top:14px;">Junto a un amigo ingeniero en sonido, co-creamos Eclipse: un espacio para que los artistas compartan su música, pre-releases, remixes y contenido exclusivo de forma directa con su comunidad, sin las barreras de las grandes plataformas.</p>
+          <p class="body-p" style="margin-top:14px;">Aporté desde la identidad visual y activaciones de marca hasta el diseño completo de la interfaz del producto.</p>
         </div>
       </div>
 
@@ -709,7 +800,7 @@
   <!-- AUDIO BRANDING -->
   <section id="audio">
     <div class="wrap">
-      <div class="eyebrow wave"><span class="dot"></span>00:07:30 — AUDIO BRANDING</div>
+      <div class="eyebrow wave"><span class="dot"></span>AUDIO BRANDING</div>
       <h2 class="display-2" style="margin-bottom:34px;">El sonido también es marca.</h2>
       <div class="audio-panel">
         <div class="audio-copy">
@@ -732,8 +823,8 @@
   <!-- EXPERIENCE -->
   <section id="experience">
     <div class="wrap">
-      <div class="eyebrow key"><span class="dot"></span>00:09:00 — TRAYECTORIA</div>
-      <h2 class="display-2">7 años, cuatro etapas, una misma obsesión.</h2>
+      <div class="eyebrow key"><span class="dot"></span>TRAYECTORIA</div>
+      <h2 class="display-2">7 años, cuatro etapas,<br>una misma obsesión.</h2>
       <div class="tl">
         <div class="tl-row current">
           <div class="yr">2019 — hoy</div>
@@ -768,8 +859,8 @@
     <div class="wrap">
       <div class="contact-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span>00:11:00 — EXPORTAR</div>
-          <h2 class="display-2">¿Hablamos de tu próxima campaña?</h2>
+          <div class="eyebrow"><span class="dot"></span>EXPORTAR</div>
+          <h2 class="display-2">¿Hablamos de tu<br>próxima campaña?</h2>
           <p class="lede" style="margin-top:18px;">Disponible para conversar sobre el rol de Digital Marketing Designer en Ria, o cualquier proyecto donde creatividad, dato e IA tengan que trabajar juntos.</p>
         </div>
         <div class="contact-list">
@@ -784,6 +875,31 @@
       </div>
     </div>
   </footer>
+
+  <!-- Contact overlay card -->
+  <div class="contact-overlay" id="contact-overlay" aria-hidden="true">
+    <div class="contact-card-frame">
+      <div class="contact-card">
+        <button class="contact-close" id="contact-close" type="button" aria-label="Cerrar">✕</button>
+        <div class="contact-avatar">
+          <img src="https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/Avatar.png" alt="Manuel Rojas">
+        </div>
+        <h3>Manuel Rojas</h3>
+        <div class="role">Creative / Motion Designer — AI Driven</div>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/manuel-rojas-507934164/" target="_blank" rel="noopener">
+            <span class="k">LinkedIn</span><span class="v">/manuel-rojas ↗</span>
+          </a>
+          <a href="mailto:mao.rojalv@gmail.com">
+            <span class="k">Email</span><span class="v">mao.rojalv@gmail.com</span>
+          </a>
+          <a href="https://wa.me/56975553624" target="_blank" rel="noopener">
+            <span class="k">WhatsApp</span><span class="v">+56 9 7555 3624</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </main>
 
@@ -816,6 +932,30 @@
   }, { rootMargin: '-45% 0px -45% 0px' });
   sections.forEach(s => s && io.observe(s));
 
+  // ---- contact overlay (Hablemos card) ----
+  (function(){
+    const overlay = document.getElementById('contact-overlay');
+    const closeBtn = document.getElementById('contact-close');
+    const triggers = document.querySelectorAll('.js-open-contact');
+    if(!overlay) return;
+
+    function openModal(e){
+      if(e) e.preventDefault();
+      overlay.classList.add('open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      overlay.classList.remove('open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    triggers.forEach(t => t.addEventListener('click', openModal));
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (e) => { if(e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal(); });
+  })();
+
   // ---- Creative Engine demo ----
   const inHeadline = document.getElementById('in-headline');
   const inCta = document.getElementById('in-cta');
@@ -824,9 +964,9 @@
   const frames = document.querySelectorAll('.frame');
 
   const palettes = {
-    p1: { bg:'linear-gradient(135deg,#4C63F6,#13193E)', cta:'#13193E', ctaText:'#FBB059' },
-    p2: { bg:'linear-gradient(135deg,#0094FF,#466099)', cta:'#0B1220', ctaText:'#E57315' },
-    p3: { bg:'linear-gradient(135deg,#DB0404,#150404)', cta:'#150404', ctaText:'#DDE0EE' }
+    p1: { bg:'linear-gradient(135deg,#4C63F6,#13193E)', cta:'#4C63F6', ctaText:'#FFFFFF' },
+    p2: { bg:'linear-gradient(135deg,#0094FF,#466099)', cta:'#F49242', ctaText:'#FFFFFF' },
+    p3: { bg:'linear-gradient(135deg,#DB0404,#150404)', cta:'#DB0404', ctaText:'#FFFFFF' }
   };
   const primaryFmt = { meta:'meta', tiktok:'tiktok', youtube:'youtube' };
   let currentImage = null;
