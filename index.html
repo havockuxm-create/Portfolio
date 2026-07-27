@@ -109,13 +109,13 @@
   @media (max-width:1000px){ .rail{display:none;} }
 
   /* ---- hero ---- */
-  .hero{min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding-top:90px; padding-bottom:50px; text-align:center;}
-  .hero-tag{font-family:"Roboto Condensed", sans-serif; font-size:16px; color:#FFFFFF; margin-bottom:40px; letter-spacing:0.01em;}
+  .hero{min-height:100svh; display:flex; flex-direction:column; justify-content:center; padding-top:80px; padding-bottom:30px; text-align:center;}
+  .hero-tag{font-family:"Roboto Condensed", sans-serif; font-size:16px; color:#FFFFFF; margin-bottom:26px; letter-spacing:0.01em;}
   .hero-tag b{color:var(--rec); font-weight:700;}
   .hero h1{max-width:770px; margin:0 auto; font-family:"Roboto Condensed", sans-serif; font-weight:400; font-size:clamp(2.4rem, 6vw, 80.858px); line-height:0.7746; color:#FFFFFF;}
   .hero h1 .script{font-family:var(--script); font-weight:400; font-size:clamp(2.4rem, 6vw, 80.858px); line-height:0.88574; color:#FFFFFF;}
-  .hero .lede{margin:17px auto 0; text-align:center; max-width:651px; font-family:"Roboto Condensed", sans-serif; font-size:20px; font-weight:300; color:#FFFFFF; line-height:normal;}
-  .hero-actions{display:flex; gap:16px; margin-top:48px; flex-wrap:wrap; justify-content:center;}
+  .hero .lede{margin:17px auto 0; text-align:center; max-width:800px; font-family:"Roboto Condensed", sans-serif; font-size:20px; font-weight:300; color:#FFFFFF; line-height:normal; text-wrap:balance;}
+  .hero-actions{display:flex; gap:16px; margin-top:32px; flex-wrap:wrap; justify-content:center;}
   .btn{
     font-family:var(--body); font-size:14px; font-weight:500; letter-spacing:0.01em;
     padding:14px 28px; border-radius:100px; text-decoration:none;
@@ -134,9 +134,9 @@
   }
   .btn-hero:hover{transform:translateY(-2px); box-shadow:0 0 40px -6px rgba(255,42,66,0.75), 0 0 34px -6px rgba(244,146,66,0.6);}
   .hero-horizon{
-    position:relative; margin-top:36px;
-    width:100vw; max-width:1440px; left:50%; transform:translateX(-50%);
-    aspect-ratio:1440/435; overflow:visible;
+    position:relative; margin-top:20px;
+    width:100vw; left:50%; transform:translateX(-50%);
+    aspect-ratio:1440/260; overflow:visible;
   }
   .horizon-glow{
     position:absolute; left:50%; top:6%; transform:translate(-50%,-50%);
@@ -167,7 +167,7 @@
     background:var(--bg); z-index:3; pointer-events:none;
   }
   .hero-strip{
-    position:relative; z-index:4; margin-top:-150px;
+    position:relative; z-index:4; margin-top:-90px;
     display:flex; gap:0; justify-content:center; text-align:center;
     flex-wrap:wrap;
   }
@@ -491,8 +491,8 @@
         <div class="horizon-sphere-sm a"></div>
         <div class="horizon-glow"></div>
         <div class="horizon-sphere-sm b"></div>
-        <svg class="horizon-line" xmlns="http://www.w3.org/2000/svg" width="1440" height="435" viewBox="0 0 1440 435" fill="none">
-          <path d="M733.5 0C993.246 0 1235.53 74.7692 1440 203.959V435H0V221.479C209.999 81.5529 462.226 0 733.5 0Z" fill="#16181E"/>
+        <svg class="horizon-line" xmlns="http://www.w3.org/2000/svg" width="1440" height="260" viewBox="0 0 1440 260" fill="none">
+          <path d="M733.5 0C993.246 0 1235.53 44.69 1440 121.907V260H0V132.378C209.999 48.744 462.226 0 733.5 0Z" fill="#16181E"/>
         </svg>
         <div class="horizon-mask"></div>
       </div>
@@ -868,7 +868,6 @@
       </div>
       <div class="foot-bottom">
         <span>MANUEL ROJAS © 2026</span>
-        <span>Diseñado y codeado con ayuda de Claude</span>
       </div>
     </div>
   </footer>
