@@ -311,19 +311,42 @@
 
   /* ---- audio ---- */
   .audio-panel{
-    background:linear-gradient(135deg, var(--surface), #0F1A19);
+    background:linear-gradient(135deg, #16181E, #2B1921);
     border:1px solid var(--line); border-radius:18px; padding:40px; display:flex; gap:40px; align-items:center; flex-wrap:wrap;
   }
   .audio-copy{flex:1; min-width:260px;}
   .waveform{
     flex:1; min-width:260px; height:90px; display:flex; align-items:center; gap:3px; overflow:hidden;
   }
-  .waveform .bar{width:4px; background:var(--wave); border-radius:2px; opacity:0.5; animation:pulse 2.2s ease-in-out infinite;}
+  .waveform .bar{width:4px; background:var(--wave); border-radius:2px; opacity:0.5; animation:pulse 2.2s ease-in-out infinite; animation-play-state:paused;}
+  .waveform.playing .bar{opacity:0.95; animation-play-state:running;}
   @keyframes pulse{ 0%,100%{transform:scaleY(0.3);} 50%{transform:scaleY(1);} }
   .render-tag{
     font-family:var(--mono); font-size:11px; color:var(--key); border:1px dashed var(--key);
     display:inline-block; padding:6px 12px; border-radius:100px; margin-top:18px; letter-spacing:0.04em;
   }
+  .audio-player-row{display:flex; align-items:center; gap:14px; margin-top:22px;}
+  .audio-play-btn{
+    width:46px; height:46px; border-radius:50%; border:1px solid var(--line-strong); background:rgba(0,0,0,0.2);
+    color:var(--wave); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+    transition:border-color .2s, background .2s; padding:0;
+  }
+  .audio-play-btn:hover{border-color:var(--wave); background:rgba(244,146,66,0.1);}
+  .audio-now{font-family:var(--mono); font-size:12.5px; color:var(--text-muted); line-height:1.4;}
+  .audio-tracklist{
+    display:flex; gap:10px; overflow-x:auto; margin-top:22px; padding:2px 2px 10px;
+    scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;
+  }
+  .audio-tracklist::-webkit-scrollbar{height:6px;}
+  .audio-tracklist::-webkit-scrollbar-track{background:transparent;}
+  .audio-tracklist::-webkit-scrollbar-thumb{background:var(--line-strong); border-radius:100px;}
+  .audio-track{
+    flex:0 0 auto; font-family:var(--mono); font-size:12px; color:var(--text-muted); background:none;
+    border:1px solid var(--line); border-radius:100px; padding:9px 18px; cursor:pointer; white-space:nowrap;
+    transition:border-color .2s, color .2s, background .2s;
+  }
+  .audio-track:hover{border-color:var(--wave); color:#fff;}
+  .audio-track.active{border-color:var(--wave); color:var(--wave); background:rgba(244,146,66,0.1);}
 
   /* ---- experience ---- */
   .tl{border-top:1px solid var(--line); margin-top:24px;}
@@ -691,10 +714,18 @@
       <div class="audio-panel">
         <div class="audio-copy">
           <p class="body-p">Durante casi 7 años en Xepelin no solo diseñé lo visual: también construí identidad sonora de marca — el audiologo y piezas musicales que hoy son parte del reconocimiento de la marca en eventos, video y redes.</p>
-          <div class="render-tag">render en progreso — audio próximamente</div>
+          <div class="audio-player-row">
+            <button class="audio-play-btn" id="audio-playpause" aria-label="Reproducir">
+              <svg id="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg id="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+            </button>
+            <span class="audio-now" id="audio-now">Elige una pieza abajo para escuchar</span>
+          </div>
         </div>
         <div class="waveform" aria-hidden="true" id="waveform"></div>
       </div>
+      <div class="audio-tracklist" id="audio-tracklist"></div>
+      <audio id="audio-el" preload="none"></audio>
     </div>
   </section>
 
@@ -739,7 +770,7 @@
         <div>
           <div class="eyebrow"><span class="dot"></span>00:11:00 — EXPORTAR</div>
           <h2 class="display-2">¿Hablamos de tu próxima campaña?</h2>
-          <p class="lede" style="margin-top:18px;">Siempre abierto a colaborar en proyectos exigentes donde el diseño, la multimedia y la estrategia técnica van de la mano.</p>
+          <p class="lede" style="margin-top:18px;">Disponible para conversar sobre el rol de Digital Marketing Designer en Ria, o cualquier proyecto donde creatividad, dato e IA tengan que trabajar juntos.</p>
         </div>
         <div class="contact-list">
           <a href="mailto:mao.rojalv@gmail.com"><span class="k">Email</span> mao.rojalv@gmail.com</a>
@@ -913,6 +944,78 @@
     // prevent the click-through on the image right after a drag
     track.addEventListener('click', (e) => { if(moved) e.preventDefault(); }, true);
   });
+
+  // ---- audio branding player ----
+  (function(){
+    const AUDIO_BASE = 'https://raw.githubusercontent.com/havockuxm-create/Portfolio/refs/heads/main/assets/audio_branding/';
+    const tracks = [
+      { file: 'Xepelin - Estreno.mp3', label: 'Xepelin — Estreno' },
+      { file: 'Xepelin CEO.mp3', label: 'Xepelin — CEO' },
+      { file: 'Xepelin Lo-financiamiento.mp3', label: 'Xepelin — Lo-financiamiento' },
+      { file: 'Xepelin - ARAP 115 (Original Mix).mp3', label: 'Xepelin — ARAP 115 (Original Mix)' },
+      { file: 'Amber 2.mp3', label: 'Amber 2' },
+      { file: 'Amber 4.mp3', label: 'Amber 4' },
+      { file: 'Amber O2.mp3', label: 'Amber O2' },
+      { file: 'Amber O13.mp3', label: 'Amber O13' },
+      { file: 'Cool.mp3', label: 'Cool' },
+      { file: 'Delivery 03.mp3', label: 'Delivery 03' },
+      { file: 'HR 06.mp3', label: 'HR 06' },
+      { file: 'News 06.mp3', label: 'News 06' },
+    ];
+
+    const list = document.getElementById('audio-tracklist');
+    const audioEl = document.getElementById('audio-el');
+    const playBtn = document.getElementById('audio-playpause');
+    const nowEl = document.getElementById('audio-now');
+    const waveformEl = document.getElementById('waveform');
+    const iconPlay = document.getElementById('icon-play');
+    const iconPause = document.getElementById('icon-pause');
+    if(!list || !audioEl) return;
+
+    let currentIndex = null;
+
+    tracks.forEach((t, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'audio-track';
+      btn.textContent = t.label;
+      btn.addEventListener('click', () => playTrack(i));
+      list.appendChild(btn);
+    });
+    const trackEls = list.querySelectorAll('.audio-track');
+
+    function setPlayingUI(isPlaying){
+      iconPlay.style.display = isPlaying ? 'none' : 'block';
+      iconPause.style.display = isPlaying ? 'block' : 'none';
+      playBtn.setAttribute('aria-label', isPlaying ? 'Pausar' : 'Reproducir');
+      waveformEl.classList.toggle('playing', isPlaying);
+    }
+
+    function playTrack(i){
+      const t = tracks[i];
+      if(currentIndex !== i){
+        audioEl.src = AUDIO_BASE + encodeURIComponent(t.file);
+        currentIndex = i;
+        trackEls.forEach(el => el.classList.remove('active'));
+        trackEls[i].classList.add('active');
+        nowEl.textContent = 'Reproduciendo: ' + t.label;
+      }
+      audioEl.play();
+    }
+
+    playBtn.addEventListener('click', () => {
+      if(currentIndex === null){ playTrack(0); return; }
+      if(audioEl.paused){ audioEl.play(); } else { audioEl.pause(); }
+    });
+    audioEl.addEventListener('play', () => setPlayingUI(true));
+    audioEl.addEventListener('pause', () => setPlayingUI(false));
+    audioEl.addEventListener('ended', () => {
+      setPlayingUI(false);
+      nowEl.textContent = 'Elige una pieza abajo para escuchar';
+      trackEls.forEach(el => el.classList.remove('active'));
+      currentIndex = null;
+    });
+  })();
 </script>
 
 </body>
